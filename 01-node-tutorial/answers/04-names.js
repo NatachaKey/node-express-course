@@ -1,4 +1,4 @@
-//local use only (in this directory)
+//local use only (in this file only)
 const secret =' SUPER SECRET';
 //share with the rest of application
 const john ='John';
