@@ -8,7 +8,8 @@ require('dotenv').config()
 
 //what does this line do?
 app.use(express.json())
-//The app.use() function adds a new middleware to the app. Express.json() is a built in middleware function, it parses incoming JSON requests and puts the parsed data in req.body.
+//The app.use() function adds a new middleware to the app. 
+//Express.json() is a built in middleware function, it parses incoming JSON requests and puts the parsed data in req.body.
 // parse converts json to JavaScript object
 //and this object is passed as a req.body
 
