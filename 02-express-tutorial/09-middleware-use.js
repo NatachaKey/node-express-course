@@ -6,7 +6,7 @@ const authorize = require('./authorize')
 //  req => middleware => res
 
 //we can pass two o more middleware functions  in array (the order is important- the will be executed in this order) ( in this case logger and authorize)-
-app.use([authorize, logger])
+app.use([authorize, logger]);
 
 //app.use(authorize)
 
