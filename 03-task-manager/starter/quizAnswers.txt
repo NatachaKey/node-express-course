@@ -1,0 +1,45 @@
+1.Quickly explain how middleware is used in an Express application.
+
+Middleware functions in an Express application are functions that have access to the request and response objects, and the next() function in the application's request-response cycle.
+They can perform various tasks, such as logging, authentication, handling errors, parsing request bodies, etc.
+Also they can be used in an Express application by calling the use() method of the application object and passing it a callback function. 
+The app.use(nameOfMiddlewareFunction) method is used to tell the application to use this middleware function for every incoming request.
+
+
+2.What does CRUD stand for?
+
+CRUD stands for Create, Read, Update, and Delete. It is a set of four basic operations that can be performed on most database systems, applications or APIs that deal with data.
+
+Create involves creating a new record or data entry in the system.
+Read  involves retrieving or reading the data from the system.
+Update  involves modifying or updating the existing data in the system.
+Delete involves deleting or removing the data from the system.
+
+
+
+3.You are careful to store your sensitive information in a .env file.
+
+3.1 How do you get your app to access the information in the .env file?
+
+In order to access information in the .env file, we use a module that can read environment variables from this file and load them into the Node.js process. 
+We use dotenv module:
+-Install dotenv module by running npm install dotenv
+-Create a .env file in the root directory of our project and add our environment variables in the format VARIABLE_NAME=value. For example: MONGO_URI = mongodb+srv://blabla
+-Require and configure the dotenv module in our Node.js application by adding the following line of code at the top of our file: require('dotenv').config();
+-Now we can access the environment variables in our code using process.env.VARIABLE_NAME. For example:
+
+const connectDB = require('./path....')
+
+const start = async () =>{
+    try{
+        await connectDB(process.env.MONGO_URI)
+    } catch (error) {
+        console.log(error);    
+    }
+}
+
+start()
+
+
+3.2 How do you protect the contents of the .env file so that it is not stored in your github repository?
+By adding .env file to our .gitignore file so that sensitive information in the .env file is not pushed to our repository.

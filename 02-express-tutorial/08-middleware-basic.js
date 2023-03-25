@@ -10,14 +10,14 @@ const app = express()
 // each middleware function has access to request and response => response will do some kind of functionality
 
 //we can also put logget in another file and export it (see logger.js)
-const logger = (req, res, next) =>{
-    const method = req.method
-    const url = req.url
-    const time = new Date().getFullYear()
-    console.log(method, url, time);
-    next()
-    // or res.send('Test')
-}
+const logger = (req, res, next) => {
+  const method = req.method;
+  const url = req.url;
+  const time = new Date().getFullYear();
+  console.log(method, url, time);
+  next();
+  // or res.send('Test')
+};
     //next it is the third argument that is passed to the middleware function. 
     //named by convention.
     //With next() we pass the whole logic ( in this case as function logger) to the the next middleware function in the app.
