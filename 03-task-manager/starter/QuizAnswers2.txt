@@ -1,0 +1,20 @@
+1.In this lesson, you created a middleware function called asyncWrapper. Why?
+
+We created a middleware function called asyncWrapper to avoid setting up try and catch blocks for every function-controller (getAllTasks, createTask...); so we wanted to refactor our code. 
+In asyncWrapper we set up try catch blocks.
+asyncWrapper returns another async function that has access to req, res, next (from express.js).
+In the function body of current function-controller (getAllTasks, createTask...) we decide what to do with our argument: for example, in getAllTasks - we are waiting (await) to find all our tasks ( .find({}))
+and if everything is OK we send back all tasks to the user :  res.status(200).json({ tasks })
+
+
+
+2.Suppose that you want to make sure that both a status code and and error message are send back to the user when they request the URL for a task that does not exist. Assume that you’ve created a CustomAPIError class and an error handler that references that class. Complete the code:
+
+const getTask = asyncWrapper(async (req, res, next) => {
+  const { id: taskID } = req.params;
+  const task = await Task.findOne({ _id: taskID });
+  if (!task) {
+     return next(createCustomError(No task with id : ${taskID}, 404))
+  }
+  res.status(200).json({ task });
+});
