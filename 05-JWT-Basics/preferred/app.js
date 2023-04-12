@@ -4,15 +4,11 @@ const express = require('express');
 const app = express();
 
 const mainRouter = require('./routes/main');
-const errorHandlerMiddleware = require('./middleware/error-handler');
 
 app.use(express.static('./public'));
 app.use(express.json());
 
 app.use('/api/v1', mainRouter);
-
-
-app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 6000;
 
